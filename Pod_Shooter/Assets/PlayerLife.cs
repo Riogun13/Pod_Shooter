@@ -24,7 +24,7 @@ public class PlayerLife : NetworkBehaviour
         }
 	}
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Collision damageCollision)
     {
         if (isServer)
         {

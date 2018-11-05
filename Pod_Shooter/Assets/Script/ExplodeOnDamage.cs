@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplodeOnDamage : MonoBehaviour, Damagable {
+public class ExplodeOnDamage : Damagable {
     
     [SerializeField]float ExplosionRadius = 5;
     [SerializeField] float ExplositionDamage = 1;
@@ -16,12 +16,12 @@ public class ExplodeOnDamage : MonoBehaviour, Damagable {
 		
 	}
 
-    public void DealDamage(int Damage) {
+    public override void DealDamage(int Damage, Collision collision) {
         Explode();
     }
 
     private void Explode() {
-        //instatiate particle system
+
         Destroy(gameObject);
     }
 }

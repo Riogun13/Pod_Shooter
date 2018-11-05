@@ -10,6 +10,7 @@ public class Bullet : NetworkBehaviour
     [SerializeField]float DestroyBulletAfterCollisionTime = 5f;
     [SerializeField] float maxLifeTime = 120f;
     [SerializeField] float bulletForce = 1500;
+    [SerializeField] int bulletdamage = 25;
     // Use this for initialization
 
     void Start() {
@@ -25,7 +26,12 @@ public class Bullet : NetworkBehaviour
        // Damagable damagable = collision
         if (isServer)
         {
-
+            Damagable damagable = collision.gameObject.GetComponent<Damagable>();
+            if (damagable != null)
+            {
+                damagable.DealDamage(bulletdamage, collision);
+                Destroy(gameObject);
+            }
         }
         Invoke("DetroyBullet", DestroyBulletAfterCollisionTime);
     }

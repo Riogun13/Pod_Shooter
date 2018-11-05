@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerDamage : MonoBehaviour {
+public class playerDamage : Damagable
+{
     PlayerLife playerLife;
 	// Use this for initialization
 	void Start () {
         playerLife = GetComponent<PlayerLife>();
 	}
 
-    public void DealDamage(int damage)
+    public override void DealDamage(int damage, Collision collision)
     {
-        playerLife.TakeDamage(damage);
+        playerLife.TakeDamage(damage, collision);
     }
 
     // Update is called once per frame

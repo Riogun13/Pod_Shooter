@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public interface Damagable  {
-    void DealDamage(int Damage);
+public abstract class Damagable : MonoBehaviour
+{
+
+    abstract public void DealDamage(int damage, Collision collision);
 }
